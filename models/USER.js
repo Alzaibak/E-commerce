@@ -1,5 +1,4 @@
 const moongose = require("mongoose");
-const {Boolean} = require("webidl-conversions");
 
 const UserSchema = new moongose (
     {
