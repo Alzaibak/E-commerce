@@ -1,6 +1,6 @@
 const moongose = require("mongoose");
 
-const ProductSchema = new moongose (
+const ProductSchema = moongose.Schema (
     {
         tilte: {type:String, require:true, unique:true},
         dec: {type: String, require:true},

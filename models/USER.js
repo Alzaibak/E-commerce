@@ -1,6 +1,6 @@
 const moongose = require("mongoose");
 
-const UserSchema = new moongose (
+const UserSchema = moongose.Schema (
     {
         username: {type:String, require:true, unique:true},
         email: {type: String, require:true, unique:true},
@@ -13,4 +13,4 @@ const UserSchema = new moongose (
     { timestamps:true},
 );
 
-module.exports = moongose.model('User', UserSchema);
+module.exports = moongose.model('USER', UserSchema);
