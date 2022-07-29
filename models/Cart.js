@@ -1,6 +1,6 @@
 const moongose = require("mongoose");
 
-const CartSchema = new moongose (
+const CartSchema = moongose.Schema (
     {
         userId: {type:String, require:true},
         products:[
