@@ -12,7 +12,7 @@ dotenv.config();
 // mongoDb database liniking
 moongose
 .connect(process.env.MONGO_URL)
-.then (()=> console.log("DB connection Done")).catch((err)=>console.log("error"));
+.then (()=> console.log("DB connection Done")).catch((err)=>console.log("Connection impossible with DB Database"));
 
 // user route liniking
 app.use(express.json());
