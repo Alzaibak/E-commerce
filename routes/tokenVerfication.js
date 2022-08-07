@@ -1,8 +1,6 @@
 const jsonWebToken = require("jsonwebtoken");
 
-
-
-
+// token verification function
 const tokenVerfication = (req,res,next)=>{
     const authHeader = req.headers.token;
 
@@ -18,15 +16,23 @@ const tokenVerfication = (req,res,next)=>{
     }
 }
 
+//user token with id verfication before updating the personal info in inheriting the previous function
 const tokenVerificationAndAuthorization = (req,res,next) =>{
     tokenVerfication(req,res,()=>{
-        
-        if (req.user._id == req.params[':id'] || req.user.isAdmin) {
-            
-            
+        if (req.user._id === req.params[':id'] || req.user._isAdmin) {
             next();
         }else{ res.status(403).json("You are not allowed to do that")}
     })
 }
 
-module.exports = {tokenVerfication, tokenVerificationAndAuthorization};
+// admin token verfication before adding or deleting products 
+const tokenVerificationAndAdmin = (req,res,next) =>{
+    tokenVerfication(req,res,()=>{
+        
+        if (req.user.isAdmin) {
+            next();
+        }else{ res.status(403).json("You are not admin")}
+    })
+}
+
+module.exports = {tokenVerfication, tokenVerificationAndAuthorization, tokenVerificationAndAdmin};
